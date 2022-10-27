@@ -13,8 +13,9 @@ body {
 /*variable pour le pre-loader*/
 .preload {
   position: fixed;
-  margin-top: 50%;
-  margin-left: 25%;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
   animation-name: loader;
   animation-duration: 3s;
   visibility: hidden;
@@ -265,49 +266,94 @@ body {
 
 /*MENU PAGE*/
 .img__pre {
-  border: solid 1px red;
+  animation-name: pre-loader;
+  animation-duration: 3s;
+  visibility: visible;
 }
 .img__pre img {
+  max-height: 70%;
+  min-height: 70%;
   width: 100%;
   object-fit: cover;
 }
 
 .menu-restaurant {
+  padding: 35px 10px 15px 10px;
+  transform: translateY(-50px);
+  margin-bottom: -50px;
+  animation-name: pre-loader;
+  animation-duration: 3s;
+  visibility: visible;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  border: solid 1px;
   background-color: #f6f6f6;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
 }
 .menu-restaurant__titre {
+  width: 100%;
+  padding: 0 15px;
+  margin: 10px 0;
+  font-size: clamp(16px, 5vw, 20px);
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-direction: row;
   font-family: Shrikhand, roboto;
+  justify-content: space-between;
+}
+.menu-restaurant__titre--liked {
+  padding-right: 10px;
+  color: #353535;
+  justify-self: flex-end;
+  align-self: center;
 }
 .menu-restaurant__categorie {
+  margin: 20px 0px 5px 15px;
+  align-self: flex-start;
   color: #353535;
   font-weight: 100;
+  font-size: 17px;
+}
+.menu-restaurant__categorie::after {
+  content: "";
+  position: absolute;
+  width: 10%;
+  background-color: #99e2d0;
+  height: 3px;
+  margin-top: 20px;
+  left: 7vw;
 }
 .menu-restaurant__plat-card {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  flex-direction: column;
-  width: 90%;
+  flex-direction: row;
+  width: 92%;
   height: 70px;
   background-color: white;
   border-radius: 20px;
-  margin: 15px;
+  padding: 0px 10px;
+  margin: 5px 0;
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.15);
 }
-.menu-restaurant__plat-card p:first-of-type {
+.menu-restaurant__plat-card--content {
+  overflow: hidden;
+}
+.menu-restaurant__plat-card--content p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.menu-restaurant__plat-card--content p:first-of-type {
   font-weight: bold;
   margin-bottom: 5px;
+}
+.menu-restaurant__plat-card--price {
+  white-space: nowrap;
+  padding-top: 25px;
+  padding-right: 10px;
+  font-weight: bold;
+  font-size: 15px;
 }
 .menu-restaurant__button--gradiant {
   background: #9356DC;
@@ -315,7 +361,7 @@ body {
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.35);
   border-radius: 25px;
   color: #fff;
-  padding: 12px 20px;
+  padding: 12px 40px;
   margin: 20px 0;
 }
 
