@@ -113,13 +113,18 @@ body {
   padding: 0 15px;
 }
 .header .button--gradiant {
-  background: #9356DC;
   background: linear-gradient(-10deg, #9356DC 0%, rgb(255, 121, 218) 100%);
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.35);
   border-radius: 25px;
   color: #fff;
   padding: 12px 20px;
   margin: 20px 0;
+  transition: 0.2s ease-in-out;
+}
+.header .button--gradiant:hover {
+  cursor: pointer;
+  background: linear-gradient(-10deg, rgba(147, 86, 220, 0.9) 0%, rgb(255, 121, 218) 78%);
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 .fonctionnement {
@@ -231,6 +236,24 @@ body {
   font-weight: bold;
   margin-bottom: 5px;
 }
+.main .restaurant-card__desc__liked {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 20%;
+  height: 90%;
+  padding: 10px;
+}
+.main .restaurant-card__desc .coeur_hover {
+  opacity: 0;
+  color: rgb(255, 121, 218);
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+}
+.main .restaurant-card__desc .coeur_hover:hover {
+  opacity: 1;
+}
 
 .footer {
   display: flex;
@@ -266,6 +289,8 @@ body {
 
 /*MENU PAGE*/
 .img__pre {
+  width: 100%;
+  max-height: 300px;
   animation-name: pre-loader;
   animation-duration: 3s;
   visibility: visible;
@@ -275,6 +300,68 @@ body {
   min-height: 70%;
   width: 100%;
   object-fit: cover;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes upfade {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  80% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+.card-1 {
+  animation-delay: 0.15s;
+}
+
+.card-2 {
+  animation-delay: 0.3s;
+}
+
+.card-3 {
+  animation-delay: 0.45s;
+}
+
+.card-4 {
+  animation-delay: 0.6s;
+}
+
+.card-5 {
+  animation-delay: 0.75s;
+}
+
+.card-6 {
+  animation-delay: 0.9s;
+}
+
+.card-7 {
+  animation-delay: 1.05s;
+}
+
+.card-8 {
+  animation-delay: 1.2s;
+}
+
+.card-9 {
+  animation-delay: 1.35s;
+}
+
+.card-10 {
+  animation-delay: 1.5s;
 }
 
 .menu-restaurant {
@@ -335,6 +422,9 @@ body {
   padding: 0px 10px;
   margin: 5px 0;
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.15);
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+  animation-name: upfade;
 }
 .menu-restaurant__plat-card--content {
   overflow: hidden;
@@ -356,13 +446,17 @@ body {
   font-size: 15px;
 }
 .menu-restaurant__button--gradiant {
-  background: #9356DC;
   background: linear-gradient(-10deg, #9356DC 0%, rgb(255, 121, 218) 100%);
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.35);
   border-radius: 25px;
   color: #fff;
   padding: 12px 40px;
   margin: 20px 0;
+}
+.menu-restaurant__button--gradiant:hover {
+  cursor: pointer;
+  background: linear-gradient(-10deg, rgba(147, 86, 220, 0.9) 0%, rgb(255, 121, 218) 78%);
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 /*# sourceMappingURL=style.css.map */

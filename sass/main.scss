@@ -96,7 +96,6 @@ $dir-default: row;
 }
 
 @mixin button-gradiant{
-	background: $purple;
 	background: linear-gradient(-10deg, $purple 0%, rgba(255,121,218,1) 100%);
 	box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.35);
 	border-radius: 25px ;
@@ -122,8 +121,16 @@ $dir-default: row;
 		@include button-gradiant;
 		padding: 12px 20px;
 		margin: 20px 0;
+		transition: 0.2s ease-in-out;
+		&:hover{
+			cursor: pointer;
+			background: linear-gradient(-10deg, rgba(147,86,220,0.9) 0%, rgba(255,121,218,1) 78%);
+			box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.50);
+		}
 	}
+	
 }
+
 
 .fonctionnement{
 	@include flexbox($justify-content-default,$align-item-default,column);
@@ -206,6 +213,21 @@ $dir-default: row;
 					margin-bottom: 5px;
 				}
 			}
+			&__liked{
+				@include flexbox($center,$center);
+				width: 20%;
+				height: 90%;
+				padding: 10px;
+			}	
+			.coeur_hover{
+				opacity: 0;
+				color:rgba(255,121,218,1);
+				position: absolute;
+				transition: all 0.5s ease-in-out;
+			}
+			.coeur_hover:hover{
+				opacity: 1;
+			}
 		}
 	}
 }
@@ -239,12 +261,31 @@ $dir-default: row;
 
 // Resize img_pre à faire
 .img__pre {
+	width: 100%;
+	max-height: 300px;
 	@include pre-loader-call;
 	img{
 		max-height: 70%;
 		min-height: 70%;
 		width: 100%;
 		object-fit: cover;
+	}
+}
+
+@keyframes fade{
+	0%{opacity: 0};
+	100%{opacity:0};
+}
+@keyframes upfade{
+	0%{opacity: 0; transform: translateY(50px);}
+	80%{opacity: 0; transform: translateY(50px);}
+	100%{opacity: 1; transform: translateY(0px);}
+}  
+
+$delay: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+@each $card in $delay {
+	.card-#{$card} {
+		animation-delay: calc( 0.15s * $card);
 	}
 }
 
@@ -297,6 +338,9 @@ $dir-default: row;
 		padding: 0px 10px;
 		margin: 5px 0;
 		box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.15);
+		animation-duration: 4s;
+		animation-iteration-count: 1;
+		animation-name: upfade;
 		&--content{
 			overflow: hidden;
 			p{
@@ -316,10 +360,16 @@ $dir-default: row;
 			font-weight: bold;
 			font-size: 15px;
 		}
+		
 	}
 	&__button--gradiant{
 		@include button-gradiant;
 		padding: 12px 40px;
 		margin: 20px 0;
+		&:hover{
+			cursor: pointer;
+			background: linear-gradient(-10deg, rgba(147,86,220,0.9) 0%, rgba(255,121,218,1) 78%);
+			box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.50);
+		}
 	}
 }
