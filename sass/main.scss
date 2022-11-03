@@ -5,49 +5,76 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-body{
+
+body {
 	font-family: 'Roboto', sans-serif;
 }
 
 /*variable pour le pre-loader*/
 
 $visibilite: visible;
-$hidden: hidden; 
+$hidden: hidden;
 
-@mixin pre-loader-call ($visible: $visibilite){
+@mixin pre-loader-call ($visible: $visibilite) {
 	animation-name: pre-loader;
 	animation-duration: 3s;
 	visibility: $visible;
 }
 
-.preload{
-    position: fixed;
+.preload {
+	position: fixed;
 	top: 50%;
-    left: 50%;
-    transform: translateX(-50%);
+	left: 50%;
+	transform: translateX(-50%);
 	animation-name: loader;
 	animation-duration: 3s;
 	visibility: hidden;
 	animation-iteration-count: 1;
+}
 
+@keyframes pre-loader {
+	0% {
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	99% {
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	100% {
+		opacity: 1;
+		visibility: visible;
+	}
 }
-@keyframes pre-loader{
-	0%{opacity:0; visibility: hidden;}
-	99%{opacity:0; visibility: hidden;}
-	100%{opacity: 1; visibility: visible;}
+
+@keyframes loader {
+	25% {
+		opacity: 25%;
+		visibility: visible;
+	}
+
+	50% {
+		opacity: 100%
+	}
+
+	75% {
+		opacity: 25%
+	}
+
+	100% {
+		opacity: 0%;
+		visibility: hidden;
+	}
 }
-@keyframes loader{
-	25%{opacity: 25%; visibility: visible;}
-	50%{opacity: 100%}
-	75%{opacity: 25%}
-	100%{opacity: 0%; visibility: hidden;}
-}  
 
 /*color variable*/
 $bg-main : #f6f6f6;
 $white : #fff;
 $bg-secondary : #eaeaea;
 $purple: #9356DC;
+$purple-light: #f5edff;
 $mint : #99e2d0;
 $mint-text : #169477;
 $text-secondary : #353535;
@@ -59,7 +86,7 @@ $align-item-default : stretch;
 $dir-default: row;
 
 
-@mixin flexbox($justify: $justify-content-default, $align : $align-item-default, $dir : $dir-default){
+@mixin flexbox($justify: $justify-content-default, $align : $align-item-default, $dir : $dir-default) {
 	display: flex;
 	justify-content: $justify;
 	align-items: $align;
@@ -67,94 +94,103 @@ $dir-default: row;
 }
 
 
-.nav{
+.nav {
 	@include pre-loader-call;
 	@include flexbox($center);
 	padding: 20px 0;
-	box-shadow:  0 7px 9px -7px rgba(0,0,0,0.4);
-	&__retour{
+	box-shadow: 0 7px 9px -7px rgba(0, 0, 0, 0.4);
+
+	&__retour {
 		position: relative;
 		right: 13%;
 		color: $text-secondary;
 		text-decoration: none;
 	}
-	&__localisation{
-		@include flexbox($center,$center);
+
+	&__localisation {
+		@include flexbox($center, $center);
 		height: 50px;
-		background-color: $bg-secondary;	
-		box-shadow: inset 0 7px 9px -7px rgba(0,0,0,0.4);
+		background-color: $bg-secondary;
+		box-shadow: inset 0 7px 9px -7px rgba(0, 0, 0, 0.4);
 		@include pre-loader-call;
-		&__text{
+
+		&__text {
 			font-size: 18px;
 			color: $text-secondary;
 			padding-left: 10px;
 		}
-		&__icon{
+
+		&__icon {
 			color: $text-secondary;
-		}		
+		}
 	}
 }
 
-@mixin button-gradiant{
-	background: linear-gradient(-10deg, $purple 0%, rgba(255,121,218,1) 100%);
-	box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.35);
-	border-radius: 25px ;
+@mixin button-gradiant {
+	background: linear-gradient(-10deg, $purple 0%, rgba(255, 121, 218, 1) 100%);
+	box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.35);
+	border-radius: 25px;
 	color: $white;
 }
 
-.header{
+.header {
 	padding: 25px 15px;
 	background-color: $bg-main;
-	@include flexbox($center, $center,column);
+	@include flexbox($center, $center, column);
 	text-align: center;
 	@include pre-loader-call;
-	
-	&__title{
+
+	&__title {
 		font-weight: bold;
 		font-size: 24px;
 		padding: 10px 60px;
 	}
-	&__title-secondary{
+
+	&__title-secondary {
 		padding: 0 15px;
 	}
-	.button--gradiant{
+
+	.button--gradiant {
 		@include button-gradiant;
 		padding: 12px 20px;
 		margin: 20px 0;
 		transition: 0.2s ease-in-out;
-		&:hover{
+
+		&:hover {
 			cursor: pointer;
-			background: linear-gradient(-10deg, rgba(147,86,220,0.9) 0%, rgba(255,121,218,1) 78%);
-			box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.50);
+			background: linear-gradient(-10deg, rgba(147, 86, 220, 0.9) 0%, rgba(255, 121, 218, 1) 78%);
+			box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.50);
 		}
 	}
-	
+
 }
 
-
-.fonctionnement{
-	@include flexbox($justify-content-default,$align-item-default,column);
+.fonctionnement {
+	@include flexbox($justify-content-default, $align-item-default, column);
 	margin: 25px 15px;
 	@include pre-loader-call;
-	&__box{
+
+	&__box {
 		height: 70px;
 		width: 95%;
 		background-color: $bg-main;
-		@include flexbox($justify-content-default,$center);
+		@include flexbox($justify-content-default, $center);
 		border-radius: 20px;
 		margin: 15px 5px;
 		font-weight: bold;
-		box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.35);
-		&--icon{
-			@include flexbox($justify-content-default,$center);
+		box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.35);
+
+		&--icon {
+			@include flexbox($justify-content-default, $center);
 			margin-left: 30px;
 			color: $text-secondary;
 			width: 40px;
 		}
-		&__num{
+
+		&__num {
 			position: absolute;
 			margin-left: -10px;
-			@include flexbox($center,$center);
+			@include flexbox($center, $center);
 			color: $white;
 			width: 20px;
 			height: 20px;
@@ -162,29 +198,40 @@ $dir-default: row;
 			border-radius: 10px;
 			font-size: 12px;
 		}
+
+		&:hover {
+			background-color: $purple-light;
+		}
+
+		&:hover>&--icon {
+			color: $purple;
+		}
 	}
 }
 
-.main{
+.main {
 	background-color: $bg-main;
-	@include flexbox($justify-content-default,$center,column);
+	@include flexbox($justify-content-default, $center, column);
 	padding: 25px 15px;
 	width: 100%;
 	@include pre-loader-call;
-	&__title{
+
+	&__title {
 		align-self: flex-start;
 	}
-	.restaurant-card{
-		@include flexbox($justify-content-default,$center,column);
+
+	.restaurant-card {
+		@include flexbox($justify-content-default, $center, column);
 		background-color: $white;
 		border-radius: 22px;
-		box-shadow: 0px 0px 19px -2px rgba(0, 0, 0, 0.15);
 		width: 90%;
 		height: 250px;
 		margin: 15px 0px;
 		color: black;
 		text-decoration: none;
-		&__img{
+		transition: all 0.2s ease-in-out;
+
+		&__img {
 			border-top-right-radius: 20px;
 			border-top-left-radius: 20px;
 			width: 100%;
@@ -192,7 +239,8 @@ $dir-default: row;
 			min-height: 70%;
 			object-fit: cover;
 		}
-		.tag-new{
+
+		.tag-new {
 			position: absolute;
 			background-color: $mint;
 			color: $mint-text;
@@ -202,57 +250,74 @@ $dir-default: row;
 			margin-left: 50%;
 			margin-top: 20px;
 		}
-		&__desc{
-			@include flexbox(space-between,$center);
+
+		&:hover {
+			width: 92%;
+			box-shadow: 0px 0px 19px -2px rgba(0, 0, 0, 0.45);
+		}
+
+		&__desc {
+			@include flexbox(space-between, $center);
 			width: 100%;
 			height: 30%;
-			&__titre{
+
+			&__titre {
 				padding-left: 10px;
-				p:first-of-type{
+
+				p:first-of-type {
 					font-weight: bold;
 					margin-bottom: 5px;
 				}
 			}
-			&__liked{
-				@include flexbox($center,$center);
+
+			&__liked {
+				@include flexbox($center, $center);
 				width: 20%;
 				height: 90%;
 				padding: 10px;
-			}	
-			.coeur_hover{
+			}
+
+			.coeur_hover {
 				opacity: 0;
-				color:rgba(255,121,218,1);
+				color: rgba(255, 121, 218, 1);
 				position: absolute;
 				transition: all 0.5s ease-in-out;
 			}
-			.coeur_hover:hover{
+
+			.coeur_hover:hover {
 				opacity: 1;
 			}
 		}
 	}
 }
 
-
-.footer{
-	@include flexbox($justify-content-default,$align-item-default,column);
+.footer {
+	@include flexbox($justify-content-default, $align-item-default, column);
 	background-color: $text-secondary;
 	@include pre-loader-call;
-	&__title{
+
+	&__title {
 		color: $white;
 		font-family: Shrikhand, roboto;
 		font-size: 18px;
 		margin: 20px 10px 10px 15px;
 		text-decoration: none;
 	}
-	&__link a{
+
+	&__link a {
 		@include flexbox;
 		padding: 5px 0 5px 15px;
 		text-decoration: none;
 		color: $white;
-		i{
+
+		i {
 			min-width: 20px;
 			min-height: 20px;
 			padding-right: 20px;
+		}
+
+		&:hover {
+			color: $mint;
 		}
 	}
 }
@@ -264,7 +329,8 @@ $dir-default: row;
 	width: 100%;
 	max-height: 300px;
 	@include pre-loader-call;
-	img{
+
+	img {
 		max-height: 70%;
 		min-height: 70%;
 		width: 100%;
@@ -272,33 +338,42 @@ $dir-default: row;
 	}
 }
 
-@keyframes fade{
-	0%{opacity: 0};
-	100%{opacity:0};
-}
-@keyframes upfade{
-	0%{opacity: 0; transform: translateY(50px);}
-	80%{opacity: 0; transform: translateY(50px);}
-	100%{opacity: 1; transform: translateY(0px);}
-}  
+@keyframes upfade {
+	0% {
+		opacity: 0;
+		transform: translateY(50px);
+	}
 
-$delay: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
-@each $card in $delay {
-	.card-#{$card} {
-		animation-delay: calc( 0.15s * $card);
+	80% {
+		opacity: 0;
+		transform: translateY(50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0px);
 	}
 }
 
-.menu-restaurant{
+$delay: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+
+@each $card in $delay {
+	.card-#{$card} {
+		animation-delay: calc(0.15s * $card);
+	}
+}
+
+.menu-restaurant {
 	padding: 35px 10px 15px 10px;
 	transform: translateY(-50px);
 	margin-bottom: -50px;
 	@include pre-loader-call;
-	@include flexbox($justify-content-default,$center,column);
+	@include flexbox($justify-content-default, $center, column);
 	background-color: $bg-main;
 	border-top-right-radius: 50px;
 	border-top-left-radius: 50px;
-	&__titre{
+
+	&__titre {
 		width: 100%;
 		padding: 0 15px;
 		margin: 10px 0;
@@ -306,20 +381,23 @@ $delay: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 		display: flex;
 		font-family: Shrikhand, roboto;
 		justify-content: space-between;
-		&--liked{
+
+		&--liked {
 			padding-right: 10px;
 			color: $text-secondary;
 			justify-self: flex-end;
 			align-self: center;
 		}
 	}
-	&__categorie{
+
+	&__categorie {
 		margin: 20px 0px 5px 15px;
 		align-self: flex-start;
 		color: $text-secondary;
 		font-weight: 100;
 		font-size: 17px;
-		&::after{
+
+		&::after {
 			content: "";
 			position: absolute;
 			width: 10%;
@@ -329,47 +407,96 @@ $delay: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 			left: 7vw;
 		}
 	}
-	&__plat-card{
-		@include flexbox(space-between,$center,row);
+
+	&__plat-card {
+		@include flexbox($justify-content-default, $center, row);
 		width: 92%;
 		height: 70px;
 		background-color: white;
 		border-radius: 20px;
-		padding: 0px 10px;
+		padding: 0 0 0 10px;
 		margin: 5px 0;
-		box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.15);
+		box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.15);
 		animation-duration: 4s;
 		animation-iteration-count: 1;
 		animation-name: upfade;
-		&--content{
+
+		&--content {
+			justify-self: flex-start;
 			overflow: hidden;
-			p{
+			flex-basis: 95%;
+			transition: all 0.5s ease-in-out;
+
+			p {
 				white-space: nowrap;
 				overflow: hidden;
 				text-overflow: ellipsis;
 			}
-			p:first-of-type{
+
+			p:first-of-type {
 				font-weight: bold;
 				margin-bottom: 5px;
 			}
+
 		}
-		&--price{
+
+		&--price {
 			white-space: nowrap;
 			padding-top: 25px;
 			padding-right: 10px;
 			font-weight: bold;
 			font-size: 15px;
+			flex-basis: 5%;
 		}
-		
+
+		&--check {
+			opacity: 0;
+			flex-basis: 0%;
+			display: flex !important;
+			align-items: center;
+			justify-content: center;
+			padding: 0px 0px;
+			height: 100%;
+			background-color: transparent;
+			color: $white;
+			border-bottom-right-radius: 20px;
+			border-top-right-radius: 20px;
+			overflow: hidden;
+			transition: all 0.5s ease-in-out;
+		}
+
+		&:hover>&--content {
+			flex-basis: 80%;
+			cursor: pointer;
+		}
+
+		&:hover>&--check {
+			opacity: 1;
+			flex-basis: 15%;
+			background-color: $mint;
+			cursor: pointer;
+		}
+
+		&:hover>&--check>.checked-icon {
+			opacity: 1;
+			transform: rotate(360deg);
+		}
 	}
-	&__button--gradiant{
+
+	.checked-icon {
+		transition: all 0.8s ease-in-out;
+	}
+
+	&__button--gradiant {
 		@include button-gradiant;
 		padding: 12px 40px;
 		margin: 20px 0;
-		&:hover{
+		transition: all 0.5s ease-in-out;
+
+		&:hover {
 			cursor: pointer;
-			background: linear-gradient(-10deg, rgba(147,86,220,0.9) 0%, rgba(255,121,218,1) 78%);
-			box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.50);
+			background: linear-gradient(-10deg, rgba(147, 86, 220, 0.9) 0%, rgba(255, 121, 218, 1) 78%);
+			box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.50);
 		}
 	}
 }

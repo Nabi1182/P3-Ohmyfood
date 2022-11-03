@@ -173,6 +173,12 @@ body {
   border-radius: 10px;
   font-size: 12px;
 }
+.fonctionnement__box:hover {
+  background-color: #f5edff;
+}
+.fonctionnement__box:hover > .fonctionnement__box--icon {
+  color: #9356DC;
+}
 
 .main {
   background-color: #f6f6f6;
@@ -196,12 +202,12 @@ body {
   flex-direction: column;
   background-color: #fff;
   border-radius: 22px;
-  box-shadow: 0px 0px 19px -2px rgba(0, 0, 0, 0.15);
   width: 90%;
   height: 250px;
   margin: 15px 0px;
   color: black;
   text-decoration: none;
+  transition: all 0.2s ease-in-out;
 }
 .main .restaurant-card__img {
   border-top-right-radius: 20px;
@@ -220,6 +226,10 @@ body {
   border-radius: 2px;
   margin-left: 50%;
   margin-top: 20px;
+}
+.main .restaurant-card:hover {
+  width: 92%;
+  box-shadow: 0px 0px 19px -2px rgba(0, 0, 0, 0.45);
 }
 .main .restaurant-card__desc {
   display: flex;
@@ -286,6 +296,9 @@ body {
   min-height: 20px;
   padding-right: 20px;
 }
+.footer__link a:hover {
+  color: #99e2d0;
+}
 
 /*MENU PAGE*/
 .img__pre {
@@ -302,14 +315,6 @@ body {
   object-fit: cover;
 }
 
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
 @keyframes upfade {
   0% {
     opacity: 0;
@@ -412,14 +417,14 @@ body {
 }
 .menu-restaurant__plat-card {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: row;
   width: 92%;
   height: 70px;
   background-color: white;
   border-radius: 20px;
-  padding: 0px 10px;
+  padding: 0 0 0 10px;
   margin: 5px 0;
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.15);
   animation-duration: 4s;
@@ -427,7 +432,10 @@ body {
   animation-name: upfade;
 }
 .menu-restaurant__plat-card--content {
+  justify-self: flex-start;
   overflow: hidden;
+  flex-basis: 95%;
+  transition: all 0.5s ease-in-out;
 }
 .menu-restaurant__plat-card--content p {
   white-space: nowrap;
@@ -444,6 +452,39 @@ body {
   padding-right: 10px;
   font-weight: bold;
   font-size: 15px;
+  flex-basis: 5%;
+}
+.menu-restaurant__plat-card--check {
+  opacity: 0;
+  flex-basis: 0%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 0px;
+  height: 100%;
+  background-color: transparent;
+  color: #fff;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+.menu-restaurant__plat-card:hover > .menu-restaurant__plat-card--content {
+  flex-basis: 80%;
+  cursor: pointer;
+}
+.menu-restaurant__plat-card:hover > .menu-restaurant__plat-card--check {
+  opacity: 1;
+  flex-basis: 15%;
+  background-color: #99e2d0;
+  cursor: pointer;
+}
+.menu-restaurant__plat-card:hover > .menu-restaurant__plat-card--check > .checked-icon {
+  opacity: 1;
+  transform: rotate(360deg);
+}
+.menu-restaurant .checked-icon {
+  transition: all 0.8s ease-in-out;
 }
 .menu-restaurant__button--gradiant {
   background: linear-gradient(-10deg, #9356DC 0%, rgb(255, 121, 218) 100%);
@@ -452,6 +493,7 @@ body {
   color: #fff;
   padding: 12px 40px;
   margin: 20px 0;
+  transition: all 0.5s ease-in-out;
 }
 .menu-restaurant__button--gradiant:hover {
   cursor: pointer;
