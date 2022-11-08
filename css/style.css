@@ -501,4 +501,36 @@ body {
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  .fonctionnement {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .fonctionnement h2 {
+    width: 100%;
+    text-align: center;
+  }
+  .fonctionnement__box {
+    width: 45%;
+  }
+  .main {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .main__title {
+    width: 100%;
+  }
+  .main .restaurant-card {
+    width: 45%;
+  }
+  .main .restaurant-card .tag-new {
+    margin-left: 25%;
+  }
+  .main .restaurant-card:hover {
+    width: 46%;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
