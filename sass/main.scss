@@ -166,7 +166,7 @@ $dir-default: row;
 }
 
 .fonctionnement {
-	@include flexbox($justify-content-default, $align-item-default, column);
+	@include flexbox($justify-content-default, $center, column);
 	margin: 25px 15px;
 	@include pre-loader-call;
 

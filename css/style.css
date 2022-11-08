@@ -130,7 +130,7 @@ body {
 .fonctionnement {
   display: flex;
   justify-content: flex-start;
-  align-items: stretch;
+  align-items: center;
   flex-direction: column;
   margin: 25px 15px;
   animation-name: pre-loader;
