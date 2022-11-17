@@ -144,10 +144,10 @@ $dir-default: row;
 		font-weight: bold;
 		font-size: 24px;
 		padding: 10px 60px;
-	}
-
-	&__title-secondary {
-		padding: 0 15px;
+		
+		&--secondary{
+			padding: 0 15px;
+		}
 	}
 
 	.button--gradiant {
@@ -162,7 +162,9 @@ $dir-default: row;
 			box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.50);
 		}
 	}
-
+	& a{
+		text-decoration: none;
+	}
 }
 
 .fonctionnement {
@@ -324,15 +326,12 @@ $dir-default: row;
 
 /*MENU PAGE*/
 
-// Resize img_pre à faire
 .img__pre {
 	width: 100%;
-	max-height: 300px;
 	@include pre-loader-call;
 
 	img {
-		max-height: 70%;
-		min-height: 70%;
+		max-height: 300px;
 		width: 100%;
 		object-fit: cover;
 	}
@@ -373,6 +372,11 @@ $delay: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 	border-top-right-radius: 50px;
 	border-top-left-radius: 50px;
 
+	.menu-cat{
+		@include flexbox($justify-content-default, $center , column);
+		width: 100%;
+	}
+
 	&__titre {
 		width: 100%;
 		padding: 0 15px;
@@ -396,16 +400,15 @@ $delay: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 		color: $text-secondary;
 		font-weight: 100;
 		font-size: 17px;
-
-		&::after {
-			content: "";
-			position: absolute;
-			width: 10%;
-			background-color: $mint;
-			height: 3px;
-			margin-top: 20px;
-			left: 7vw;
-		}
+	}
+	
+	&__spacer{
+		background-color: $mint;
+		height: 3px;
+		width: 45px;
+		border: none;
+		margin: 2px 0px 5px 15px;
+		align-self: flex-start;
 	}
 
 	&__plat-card {
@@ -437,7 +440,6 @@ $delay: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 				font-weight: bold;
 				margin-bottom: 5px;
 			}
-
 		}
 
 		&--price {
@@ -492,12 +494,13 @@ $delay: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 		padding: 12px 40px;
 		margin: 20px 0;
 		transition: all 0.5s ease-in-out;
-
+		
 		&:hover {
 			cursor: pointer;
 			background: linear-gradient(-10deg, rgba(147, 86, 220, 0.9) 0%, rgba(255, 121, 218, 1) 78%);
 			box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.50);
 		}
+
 	}
 }
 
@@ -531,6 +534,95 @@ $delay: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 			&:hover{
 				width: 46%;
 			}
+		}
+	}
+}
+
+@media screen and (min-width: 993px) {
+	.header{
+		width: 60%;
+		float: left;
+		padding: 25px 15px;
+		background-color: $white;
+		text-align: center;
+		&__title {
+			font-size: clamp(35px, 45px , 50px);
+			padding: 10px 60px;
+			
+			&--secondary {
+				//a clamp
+				font-size: 36px;
+				padding: 25px 15px;
+				text-align: left;
+				width: 80%;
+			}
+		}
+		.button--gradiant {
+			padding: 12px 20px;
+			margin: 20px 0;
+		}
+	}
+	.fonctionnement{
+		width: 40%;
+		float: right;
+		margin: 0 0;
+		padding: 25px 15px;
+		h2{
+			width: 50%;
+			text-align: center;
+		}
+		&__box{
+			width: 70%;
+		}
+	}
+
+	.main{
+		flex-wrap: wrap;
+		flex-direction: row;
+		justify-content: space-around;
+		&__title{
+			width: 100%;
+		}
+		.restaurant-card{
+			width: 23%;
+			height: 320px;
+			.tag-new{
+				margin-left: 13%;
+			}
+			&:hover{
+				width: 24%;
+			}
+		}
+	}
+
+	.footer {
+		justify-content: space-evenly;
+		align-items: center;
+		flex-direction: row;
+		height: 120px;
+		&__title{
+			font-size: 24px;
+		}
+		&__link{
+			width: 80%;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
+			font-size: 20px;
+		}
+	}
+ 	.menu-restaurant{
+		flex-wrap: wrap;
+		flex-direction: row;
+		justify-content: space-evenly;
+		padding-bottom: 50px;
+		align-items: flex-start;
+		.menu-cat{
+			width: 32%;
+			padding-bottom: 50px;
+		}
+		&__plat-card { 
+			margin: 10px 0;
 		}
 	}
 }
