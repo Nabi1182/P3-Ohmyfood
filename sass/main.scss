@@ -4,6 +4,7 @@
 	margin: 0 0;
 	padding: 0;
 	box-sizing: border-box;
+	scroll-behavior: smooth;
 }
 
 body {
@@ -96,16 +97,26 @@ $dir-default: row;
 
 .nav {
 	@include pre-loader-call;
-	@include flexbox($center);
 	padding: 20px 0;
 	box-shadow: 0 7px 9px -7px rgba(0, 0, 0, 0.4);
 
-	&__retour {
-		position: relative;
-		right: 13%;
+	&__list{
+		list-style: none;
+		@include flexbox($center);
+		&--return{
+			position: absolute;
+			left: 5%;
+		}
+		&--logo{
+			position: relative;
+		}
+	}
+
+	.nav__retour {
 		color: $text-secondary;
 		text-decoration: none;
 	}
+
 
 	&__localisation {
 		@include flexbox($center, $center);
@@ -220,6 +231,7 @@ $dir-default: row;
 
 	&__title {
 		align-self: flex-start;
+		padding-left: 30px;
 	}
 
 	.restaurant-card {
@@ -227,32 +239,33 @@ $dir-default: row;
 		background-color: $white;
 		border-radius: 22px;
 		width: 90%;
-		height: 250px;
+		height: 240px;
+		max-height: 250px;;
 		margin: 15px 0px;
 		color: black;
-		text-decoration: none;
 		transition: all 0.2s ease-in-out;
-
-		&__img {
-			border-top-right-radius: 20px;
-			border-top-left-radius: 20px;
+		&__link{
+			height: 70%;
 			width: 100%;
-			max-height: 70%;
-			min-height: 70%;
-			object-fit: cover;
+			&__img {
+				border-top-right-radius: 20px;
+				border-top-left-radius: 20px;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center;
+			}
+			.tag-new {
+				position: absolute;
+				background-color: $mint;
+				color: $mint-text;
+				font-weight: bold;
+				padding: 5px 10px;
+				border-radius: 2px;
+				right: 12%;
+				margin-top: 20px;
+			}
 		}
-
-		.tag-new {
-			position: absolute;
-			background-color: $mint;
-			color: $mint-text;
-			font-weight: bold;
-			padding: 5px 10px;
-			border-radius: 2px;
-			margin-left: 50%;
-			margin-top: 20px;
-		}
-
 		&:hover {
 			width: 92%;
 			box-shadow: 0px 0px 19px -2px rgba(0, 0, 0, 0.45);
@@ -288,6 +301,7 @@ $dir-default: row;
 
 			.coeur_hover:hover {
 				opacity: 1;
+				cursor: pointer;
 			}
 		}
 	}
@@ -297,6 +311,7 @@ $dir-default: row;
 	@include flexbox($justify-content-default, $align-item-default, column);
 	background-color: $text-secondary;
 	@include pre-loader-call;
+	padding-bottom: 15px;
 
 	&__title {
 		color: $white;
@@ -313,9 +328,10 @@ $dir-default: row;
 		color: $white;
 
 		i {
+			width: 30px;
+			height: 20px;
 			min-width: 20px;
 			min-height: 20px;
-			padding-right: 20px;
 		}
 
 		&:hover {
@@ -378,19 +394,31 @@ $delay: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 	}
 
 	&__titre {
+		height: 60px;
 		width: 100%;
 		padding: 0 15px;
 		margin: 10px 0;
-		font-size: clamp(16px, 5vw, 20px);
-		display: flex;
+		font-size: clamp(12px, 3vw, 20px);
+		@include flexbox(space-between,$center);
 		font-family: Shrikhand, roboto;
-		justify-content: space-between;
 
 		&--liked {
-			padding-right: 10px;
-			color: $text-secondary;
-			justify-self: flex-end;
 			align-self: center;
+			font-size: 20px;
+
+			.coeur_hover {
+				top: 74px;
+				right: 25px;
+				opacity: 0;
+				position: absolute;
+				color: rgba(255, 121, 218, 1);
+				transition: all 0.5s ease-in-out;
+			}
+
+			.coeur_hover:hover {
+				opacity: 1;
+				cursor: pointer;
+			}
 		}
 	}
 
@@ -531,7 +559,8 @@ $delay: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 		.restaurant-card{
 			width: 45%;
 			.tag-new{
-				margin-left: 25%;
+				right: auto;
+				margin-left: 29%;
 			}
 			&:hover{
 				width: 46%;
@@ -584,12 +613,14 @@ $delay: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 		justify-content: space-around;
 		&__title{
 			width: 100%;
+			padding-left: 20px;
 		}
 		.restaurant-card{
 			width: 23%;
 			height: 320px;
 			.tag-new{
-				margin-left: 13%;
+				right: auto;
+				margin-left: 14%;
 			}
 			&:hover{
 				width: 24%;
@@ -604,6 +635,7 @@ $delay: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 		height: 120px;
 		&__title{
 			font-size: 24px;
+			margin: 10px 10px 10px 15px;
 		}
 		&__link{
 			width: 80%;

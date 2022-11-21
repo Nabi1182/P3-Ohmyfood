@@ -4,10 +4,10 @@
 <head>
 	<meta charset="utf-8">
 	<title>Ohmyfood! - A la française</title>
-	<meta name="author" content="Allan Vitcoq">
+	<meta name="author" content="Nora Vitcoq">
 	<meta name="description" content="Home page">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="copyright" content="Allan Vitcoq">
+	<meta name="copyright" content="Nora Vitcoq">
 	<meta name="robots" content="follow">
 	<meta name="rating" content="general">
 	<link rel="stylesheet" href="css/style.css">
@@ -22,18 +22,29 @@
 	<div class="preload">
 		<img src="./images/logo/ohmyfood@2x.svg" alt="ohmyfood logo">
 	</div>
-	<nav class ="nav">
-		<a href="index.html" class="nav__retour" aria-label="retour à l'accueil"><i class="fa-solid fa-arrow-left fa-2x"></i></a>
-		<a href="#"><img src="images/logo/ohmyfood@2x.svg" alt="Ohmyfood logo"></a>
-	</nav>
-	<div class="img__pre">
-		 <img src="images/restaurants/toa-heftiba-DQKerTsQwi0-unsplash.jpg"
-		alt="Plats du restaurant A la française">
+	<header>
+		<nav class="nav">
+			<ul class="nav__list">
+				<li class="nav__list--return">
+					<a href="index.html" class="nav__retour" aria-label="retour à l'accueil"><i class="fa-solid fa-arrow-left fa-2x"></i></a>
+				</li>
+				<li class="nav__list--logo">
+					<a href="#"><img src="images/logo/ohmyfood@2x.svg" alt="Ohmyfood logo"></a>
+				</li>
+			</ul>
+		</nav>
+		<div class="img__pre">
+			<img src="images/restaurants/toa-heftiba-DQKerTsQwi0-unsplash.jpg" alt="Plats du restaurant A la française">
 		</div>
-	<article class="menu-restaurant">
+	</header>
+
+	<main class="menu-restaurant">
 		<div class="menu-restaurant__titre">
 			<h1>A la française</h1>
-			<i class="menu-restaurant__titre--liked fa-regular fa-xl fa-heart coeur"></i>
+			<div class="menu-restaurant__titre--liked">
+				<i class="fa-regular fa-heart coeur fa-xl"></i>
+				<i class="fa-solid fa-heart fa-xl coeur_hover"></i>
+			</div>
 		</div>
 
 		<div class="menu-cat">
@@ -141,15 +152,15 @@
 			</div>
 		</div>
 		<a class="menu-restaurant__button--gradiant" href="#">Commander</a>
-	</article>
+	</main>
 
 	<footer class="footer">
-		<a href="#" class="footer__title">Ohmyfood</a>
+		<a href="#" class="footer__title">ohmyfood</a>
 		<div class="footer__link">
 			<a href="#"><i class="fa-sharp fa-solid fa-utensils"></i>Proposer un restaurant</a>
 			<a href="#"><i class="fa-solid fa-handshake-angle"></i> Devenir partenaire</a>
 			<a href="#">Mentions légales</a>
-			<a href="#">Contact</a>
+			<a href="mailto:nora.vitcoq@gmail.com">Contact</a>
 		</div>
 	</footer>
 </body>
