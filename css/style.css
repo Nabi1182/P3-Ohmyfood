@@ -11,6 +11,7 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+/*color variable*/
 /*variable pour le pre-loader*/
 .preload {
   position: fixed;
@@ -21,6 +22,24 @@ body {
   animation-duration: 3s;
   visibility: hidden;
   animation-iteration-count: 1;
+}
+
+.spin-ring {
+  position: fixed;
+  left: -27%;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+.spin-ring:after {
+  content: " ";
+  display: block;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 6px solid #99e2d0;
+  border-color: #99e2d0 transparent #9356DC transparent;
+  animation: spin-ring 1.2s linear infinite;
 }
 
 @keyframes pre-loader {
@@ -53,7 +72,14 @@ body {
     visibility: hidden;
   }
 }
-/*color variable*/
+@keyframes spin-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 /*flex variable*/
 .nav {
   animation-name: pre-loader;
